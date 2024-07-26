@@ -191,6 +191,23 @@ Currently, the navbar is a bulleted list, not ideal for a navbar. Let's improve 
 
 Check out the results! If you like them, copy and paste them into the other pages.
 
+### Send/Receive or Account Settings: Grid Layout
+
+The Send/Receive and Account Settings forms have the functionality we need, but does have any sort of useful or pleasing layout. 
+
+1. Pick either pages/account-settings.html, or pages/send-receive.html
+2. If you want a starter version, you can run this command from the `front-end-labs` directory: `git checkout solutions -- pages/account-settings.html`
+3. Organize the HTML of the form you have chosen so that it will work with a grid. Some questions:
+  - Does each form element have to be in a div?
+  - Does each label have to be in a div? 
+  - Do we wrap the form element plus the label into a container div, or leave them as-is? 
+  - Do you see any other particular gotchas?
+4. Design a CSS grid for the form. There are many paths to success here. 
+A suggestion: think of the grid as two columns, the left column could hold the labels
+The right column could hold the form fields. But there are many possible variations
+and you should do what makes sense to you!
+5. See if the grid layout is working in your browser!
+
 ## Navbar: Putting it all together.
 
 Take a look at data/navbar-design.png: ![Design for our Navbar](data/navbar-design.png).

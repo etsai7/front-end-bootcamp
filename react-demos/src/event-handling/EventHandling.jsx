@@ -10,7 +10,7 @@ function EventHandling() {
 	// The setter/mutator for changing the value
 	let setCounter = array[1];
 	*/
-	let [counter, setCounter] = useState(10);
+	let [counter, setCounter] = useState(10); // Second item is a method for setting the value. useState(10) where 10 is default value set for counter
 	let [yesNoValue, setYesNoValue] = useState();
 
 	function handleClick() {

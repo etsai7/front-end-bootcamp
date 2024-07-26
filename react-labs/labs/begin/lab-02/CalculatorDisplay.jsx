@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CalculatorDisplay.css';
 
+
+
 function CalculatorDisplay({ lValue, rValue, operator }) {
-	let result = 0;
+
+	let [op, setOperator] = useState('operator');
+	let [result, setResult] = useState(0);
+
 	switch (operator) {
 		case '+':
 			result = lValue + rValue;
@@ -22,13 +27,22 @@ function CalculatorDisplay({ lValue, rValue, operator }) {
 
 	return (
 		<div className="calculator-display">
+			
 			<div className="lValue">{lValue}</div>
-			<div className="operator">{operator}</div>
+			<div className="operator">{setOperator(operator)}</div>
 			<div className="rValue">{rValue}</div>
 			<div>=</div>
-			<div className="result">{result}</div>
+			<div className="result">{setResult(result)}</div>
 		</div>
 	);
 }
+
+
+
+function handleOperation(event) {
+	const selectedFruit = event.target.value;
+	console.log(`You selected ${selectedFruit}`);
+	// Add other code here to handle the selected fruit
+  }
 
 export default CalculatorDisplay;

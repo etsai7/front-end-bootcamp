@@ -25,12 +25,20 @@ CalculatorDisplay as the `operator` property
 */
 
 function Calculator() {
+	let [op, setOperator] = useState('operator');
 	return (
 		<div>
+			<label for="select-op">Select your favorite operator:</label>
+			<select id="select-op" name="op" onChange={(e) => { setOperator(e.currentTarget.value);}}>
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+			</select>
 			<CalculatorDisplay
 				lValue={5}
 				rValue={10}
-				operator="+"
+				operator={operator}
 			/>
 		</div>
 	);
