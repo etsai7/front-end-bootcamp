@@ -2,10 +2,6 @@ import React, { useState, createContext } from 'react';
 import FormDataDisplay from '../FormDataDisplay';
 import TextInput from './TextInput';
 
-/*
-TODO: Reducer, is this the best solution, better example?
-*/
-
 interface FormState {
 	[field: string]: string;
 }
@@ -29,7 +25,7 @@ function FormWithContext() {
 
 	return (
 		<FormContext.Provider value={{}}>
-			<h3>Form with context and reducer</h3>
+			<h3>Form with context</h3>
 			<div className="row">
 				<div className="col">
 					<form>
