@@ -65,6 +65,8 @@ it("should access a form field via the field's label", () => {
 });
 
 it('should respond to content typed into a form field', async () => {
+	const user = userEvent.setup();
+
 	const { container } = render(<BasicComponent />);
 	let formField = screen.getByLabelText(/favorite/i);
 	expect(formField).toHaveValue('');
