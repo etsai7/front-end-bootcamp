@@ -1,8 +1,8 @@
 import React from 'react';
 import './CalculatorDisplay.css';
 
-function CalculatorDisplay({ lValue, rValue, operator }) {
-	let result = 0;
+function CalculatorDisplay({ lValue, rValue, operator }: CalculatorDisplayProps) {
+	let result: string | number = 0;
 	switch (operator) {
 		case '+':
 			result = lValue + rValue;

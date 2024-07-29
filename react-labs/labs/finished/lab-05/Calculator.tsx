@@ -19,17 +19,17 @@ function Calculator() {
 	const [rValue, setRValue] = useState(0);
 
 	/** @type {React.ChangeEventHandler<HTMLSelectElement>} */
-	function handleSwitch(event) {
+	function handleSwitch(event: React.ChangeEvent<HTMLSelectElement>) {
 		setOperator(event.currentTarget.value);
 	}
 
 	/** @type {React.ChangeEventHandler<HTMLInputElement>} */
-	function handleLValue(event) {
+	function handleLValue(event: React.ChangeEvent<HTMLSelectElement>) {
 		setLValue(Number(event.currentTarget.value));
 	}
 
 	/** @type {React.ChangeEventHandler<HTMLInputElement>} */
-	function handleRValue(event) {
+	function handleRValue(event: React.ChangeEvent<HTMLSelectElement>) {
 		setRValue(Number(event.currentTarget.value));
 	}
 
