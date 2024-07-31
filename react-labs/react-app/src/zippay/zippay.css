@@ -97,3 +97,18 @@ a:visited {
 .page-header > h1 {
 	text-align: center
 }
+
+.horizontal-list {
+  display: flex;;
+  list-style: none;
+}
+
+td {
+  text-align: center;
+}
+
+th,
+td {
+  border: 1px solid rgb(160 160 160);
+  padding: .5rem 2rem;
+}
