@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { DispatchContext } from "./ZipPayManager";
 
 import './SendPayment.css'
 
@@ -14,6 +15,7 @@ const initialStatePayment: Payment = {
 
 function SendPayment({onSavePayment}:PaymentProp ) {
     const [formState, setFormState] = useState(initialStatePayment)
+    const dispatch = useContext(DispatchContext)
 
     const handlFormUpdates = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFormState({...formState, [event.target.name]: [event.target.value]})
@@ -61,7 +63,11 @@ function SendPayment({onSavePayment}:PaymentProp ) {
                 </div>
                 <div className="submit-button">
 				    <button type="button" 
-                    onClick={() => onSavePayment(formState)}>
+                    // onClick={() => onSavePayment(formState)}>
+                    onClick={() => {
+                        dispatch!({...formState})
+                    }}
+                    >
                     Submit
                     </button>
 			    </div>

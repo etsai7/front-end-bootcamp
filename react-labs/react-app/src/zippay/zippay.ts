@@ -5,5 +5,5 @@ interface Payment {
 }
 interface PaymentDisplayProps {
 	payments: Array<Payment>;
-	displayPayments: (payment: Payment) => void;
+	// displayPayments: (payment: Payment) => void;
 }

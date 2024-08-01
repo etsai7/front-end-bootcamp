@@ -4,6 +4,7 @@ import Home from './Home';
 import './App.css';
 import LabManager from './labs/LabManager';
 import ZipPayManager from './zippay/ZipPayManager';
+import MinimizedZipPayManager from './zippay/MinimizedZipPayManager';
 
 function App() {
 	return (
@@ -20,6 +21,9 @@ function App() {
 						<li>
 							<NavLink to="/zippay">ZipPay</NavLink>
 						</li>
+						<li>
+							<NavLink to="/minZippay">MinZipPay</NavLink>
+						</li>
 					</ul>
 				</nav>
 				<hr style={{ marginTop: '5px' }} />
@@ -35,6 +39,10 @@ function App() {
 					<Route
 						path="zippay/*"
 						element={<ZipPayManager />}
+					/>
+					<Route 
+						path="minZippay/*"
+						element={<MinimizedZipPayManager/>} 
 					/>
 				</Routes>
 			</BrowserRouter>

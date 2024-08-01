@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import PaymentDisplay from "./PaymentDisplay";
+import { DispatchContext } from "./ZipPayManager";
 
-function RecentPayment({payments, displayPayments }: PaymentDisplayProps) {
+
+function RecentPayment({payments }: PaymentDisplayProps) {
+    const dispatch = useContext(DispatchContext)
     return (
         <>
         <h4>Recent Payments</h4>
@@ -14,21 +18,41 @@ function RecentPayment({payments, displayPayments }: PaymentDisplayProps) {
                 </li>
             ))}
         </ul> */}
-        <table>
+        {/* <table>
             <thead>
-                <th>Recipient</th>
-                <th>Amount</th>
-                <th>Reason</th>
+                <tr>
+                    <th>Recipient</th>
+                    <th>Amount</th>
+                    <th>Reason</th>
+                </tr>
             </thead>
             <tbody>
-                {/* <tr> */}
-                    {payments.map((payment) => (
-                            <PaymentDisplay
-                            payment={payment}
-                            onChangeTask={displayPayments}
-                        />
-                    ))}
-                {/* </tr> */}
+                {payments.map((payment) => (
+                    <tr key={payment.reason}>
+                        <PaymentDisplay
+                        payment={payment}
+                    />
+                    </tr>
+                ))}
+            </tbody>
+            
+        </table> */}
+        <table>
+            <thead>
+                <tr>
+                    <th>Recipient</th>
+                    <th>Amount</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                {payments.map((payment) => (
+                    <tr key={payment.reason}>
+                        <PaymentDisplay
+                        payment={payment}
+                    />
+                    </tr>
+                ))}
             </tbody>
             
         </table>

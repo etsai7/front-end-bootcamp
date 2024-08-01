@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, Reducer, createContext, useReducer} from 'react';
 import Navbar from './Navbar';
 import './zippay.css';
 import SendPayment from './SendPayment';
 import RecentPayment from './RecentPayment';
+import LastPayment from './LastPayment';
 
 let nextId = 4;
 const initialPayments: Array<Payment> = [
@@ -11,9 +12,13 @@ const initialPayments: Array<Payment> = [
 	{ recipient: 'Lebron', amount: 10, reason: 'Clean kitchen table' },
 ];
 
+export const PaymentContext = createContext<Array<Payment> | null>(null);
+export const DispatchContext = createContext<React.Dispatch<Payment> | null>(null);
+
 function ZipPayManager() {
 	const [paymentMessage, setPaymentMessage] = useState('');
 	const [payments, setPayments] = useState(initialPayments);
+	
 
 	const handleOnSavePayment = (payment: Payment) => {
 		setPaymentMessage(`You paid ${payment.recipient} ${payment.amount} for ${payment.reason}`)
@@ -26,6 +31,19 @@ function ZipPayManager() {
 		])
 	}
 
+	const reducer: Reducer<Array<Payment>, Payment> = (state, action) => {
+		setPaymentMessage(`You paid ${action.recipient} ${action.amount} for ${action.reason}`)
+		setPayments([
+			...payments,
+			{ recipient: action.recipient, 
+				amount: action.amount, 
+				reason: action.reason 
+			}
+		])
+	} 
+
+	const [paymentsReducer, dispatch] = useReducer(reducer, initialPayments);
+
 	// const handleDisplayPayments = (payment: Payment) => {
 	// 	setPayments([
 	// 		...payments,
@@ -37,13 +55,23 @@ function ZipPayManager() {
 	// }
 
 	return (
-		<section className="zippay-main">
-			<Navbar></Navbar>
-			<SendPayment onSavePayment={handleOnSavePayment}/>
-			{/* <p>{paymentMessage}</p> */}
-			<RecentPayment payments={payments} displayPayments={handleOnSavePayment} />
+		// <section className="zippay-main">
+		// 	<Navbar></Navbar>
+		// 	<SendPayment onSavePayment={handleOnSavePayment}/>
+		// 	{/* <p>{paymentMessage}</p> */}
+		// 	<RecentPayment payments={payments} />
 			
-		</section>
+		// </section>
+		<DispatchContext.Provider value={dispatch}>
+			<PaymentContext.Provider value={paymentsReducer}>
+				<section className="zippay-main">
+					<Navbar></Navbar>
+					<SendPayment onSavePayment={handleOnSavePayment}/>
+					<LastPayment/>
+					<RecentPayment payments={payments} />
+				</section>
+			</PaymentContext.Provider>
+		</DispatchContext.Provider>
 	);
 }
 

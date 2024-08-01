@@ -2,7 +2,7 @@
 import './zippay.css'
 export interface PaymentDisplayProp {
 	payment: Payment;
-	onChangeTask: (payment: Payment) => void;
+	// onChangeTask: (payment: Payment) => void;
 }
 // export default function PaymentDisplay({payment, onChangeTask} : PaymentDisplayProp){
 //     return (
@@ -16,12 +16,12 @@ export interface PaymentDisplayProp {
 //     )
 // };
 
-export default function PaymentDisplay({payment, onChangeTask} : PaymentDisplayProp){
+export default function PaymentDisplay({payment} : PaymentDisplayProp){
     return (
-        <tr>
+        <>
             <td>{payment.recipient}</td>
             <td>{payment.amount}</td>
             <td>{payment.reason}</td>
-        </tr>
+        </>
     )
 };
